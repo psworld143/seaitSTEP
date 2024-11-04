@@ -8,6 +8,8 @@ include('../dbconnection.php');
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    
+  <link rel="stylesheet" href="../style.css">
     <title>Evaluation Category</title>
     <style>
       #loader {
@@ -74,15 +76,12 @@ include('../dbconnection.php');
       });
     </script>
 
-    
-    
     <div>
       
       <?php 
         include('sidebar.php'); 
       ?>
-
-     
+    
       <div class="page-container">
         <!-- ### $Topbar ### -->
         <?php include('../navbar.php'); ?>
@@ -204,9 +203,6 @@ include('../dbconnection.php');
     
           </div>
         </main>
-
-        <!-- ### $App Screen Footer ### -->
-        <?php include('footer.php'); ?>
       </div>
     </div>
   </body>

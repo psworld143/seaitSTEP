@@ -9,61 +9,62 @@ include('admin_session.php');
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="stylesheet" href="../style.css">
     <title>User Management</title>
     <style>
-        #loader {
-            transition: all 0.3s ease-in-out;
-            opacity: 1;
-            visibility: visible;
-            position: fixed;
-            height: 100vh;
-            width: 100%;
-            background: #fff;
-            z-index: 90000;
+    #loader {
+        transition: all 0.3s ease-in-out;
+        opacity: 1;
+        visibility: visible;
+        position: fixed;
+        height: 100vh;
+        width: 100%;
+        background: #fff;
+        z-index: 90000;
+    }
+
+    #loader.fadeOut {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+
+
+    .spinner {
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        top: calc(50% - 20px);
+        left: calc(50% - 20px);
+        background-color: #333;
+        border-radius: 100%;
+        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+        animation: sk-scaleout 1.0s infinite ease-in-out;
+    }
+
+    @-webkit-keyframes sk-scaleout {
+        0% {
+            -webkit-transform: scale(0)
         }
 
-        #loader.fadeOut {
+        100% {
+            -webkit-transform: scale(1.0);
             opacity: 0;
-            visibility: hidden;
+        }
+    }
+
+    @keyframes sk-scaleout {
+        0% {
+            -webkit-transform: scale(0);
+            transform: scale(0);
         }
 
-
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            position: absolute;
-            top: calc(50% - 20px);
-            left: calc(50% - 20px);
-            background-color: #333;
-            border-radius: 100%;
-            -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-            animation: sk-scaleout 1.0s infinite ease-in-out;
+        100% {
+            -webkit-transform: scale(1.0);
+            transform: scale(1.0);
+            opacity: 0;
         }
-
-        @-webkit-keyframes sk-scaleout {
-            0% {
-                -webkit-transform: scale(0)
-            }
-
-            100% {
-                -webkit-transform: scale(1.0);
-                opacity: 0;
-            }
-        }
-
-        @keyframes sk-scaleout {
-            0% {
-                -webkit-transform: scale(0);
-                transform: scale(0);
-            }
-
-            100% {
-                -webkit-transform: scale(1.0);
-                transform: scale(1.0);
-                opacity: 0;
-            }
-        }
+    }
     </style>
     <script defer="defer" src="../assets/main.js"></script>
 </head>
@@ -74,12 +75,12 @@ include('admin_session.php');
     </div>
 
     <script>
-        window.addEventListener('load', function load() {
-            const loader = document.getElementById('loader');
-            setTimeout(function() {
-                loader.classList.add('fadeOut');
-            }, 300);
-        });
+    window.addEventListener('load', function load() {
+        const loader = document.getElementById('loader');
+        setTimeout(function() {
+            loader.classList.add('fadeOut');
+        }, 300);
+    });
     </script>
 
 
@@ -103,7 +104,8 @@ include('admin_session.php');
                             <div class="col-md-12">
                                 <div class="bgc-white bd bdrs-3 p-20">
                                     <div class="peer">
-                                        <button type="button" class="btn btn-primary btn-sm btn-color" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                        <button type="button" class="btn btn-primary btn-sm btn-color"
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                                             Upload List of Students
                                         </button>
                                         <?php include('notification.php'); ?>
@@ -111,53 +113,74 @@ include('admin_session.php');
                                     </div>
                                     <h4 class="c-grey-900 mB-20">List of Students</h4>
 
-                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="exampleModal" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
-                                                <form method="POST" action="../backend_scripts/add_student_user.php" enctype="multipart/form-data">
+                                                <form method="POST" action="../backend_scripts/add_student_user.php"
+                                                    enctype="multipart/form-data">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Upload CSV File</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        <h5 class="modal-title" id="exampleModalLabel">Upload CSV File
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
                                                         <div class="mb-3">
-                                                          <label class="form-label" for="inputState">Department</label>
-                                                          <select id="inputState" name="dept_id" class="form-control" required>
-                                                            <option value="">Select Below</option>
-                                                            <?php
+                                                            <label class="form-label"
+                                                                for="inputState">Department</label>
+                                                            <select id="inputState" name="dept_id" class="form-control"
+                                                                required>
+                                                                <option value="">Select Below</option>
+                                                                <?php
                                                               $cat = mysqli_query($conn, "SELECT * FROM departments ORDER BY dept_name ASC");
                                                               while($category_rows = mysqli_fetch_assoc($cat)){
                                                                 echo '<option value="'.$category_rows['id'].'">'.$category_rows['dept_name'].'</option>';
                                                               }
                                                             ?>
-                                                            
-                                                          </select>
+
+                                                            </select>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">CSV File</label>
                                                             <!-- Add the name attribute to the file input field -->
-                                                            <input class="form-control" type="file" id="formFile" name="csv_file">
+                                                            <input class="form-control" type="file" id="formFile"
+                                                                name="csv_file">
                                                         </div>
 
                                                         <!-- guidance -->
                                                         <div id="userDetails" style="display:none;">
                                                             <div class="mb-3">
-                                                                <label class="form-label" for="exampleInputEmail1">Email</label>
-                                                                <input type="email" value="seait@seait-edu.ph" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email">
+                                                                <label class="form-label"
+                                                                    for="exampleInputEmail1">Email</label>
+                                                                <input type="email" value="seait@seait-edu.ph"
+                                                                    class="form-control" name="email"
+                                                                    id="exampleInputEmail1" aria-describedby="emailHelp"
+                                                                    placeholder="Email">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label class="form-label" for="exampleInputEmail1">Password</label>
-                                                                <input type="password" class="form-control" name="password" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Password">
+                                                                <label class="form-label"
+                                                                    for="exampleInputEmail1">Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    name="password" id="exampleInputEmail1"
+                                                                    aria-describedby="emailHelp" placeholder="Password">
                                                             </div>
                                                             <div class="mb-3">
-                                                                <label class="form-label" for="exampleInputEmail1">Confirm Password</label>
-                                                                <input type="password" class="form-control" name="password1" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Confirm Password">
+                                                                <label class="form-label"
+                                                                    for="exampleInputEmail1">Confirm Password</label>
+                                                                <input type="password" class="form-control"
+                                                                    name="password1" id="exampleInputEmail1"
+                                                                    aria-describedby="emailHelp"
+                                                                    placeholder="Confirm Password">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary btn-sm btn-color" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary btn-color btn-sm">Import Students</button>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-color"
+                                                            data-bs-dismiss="modal">Close</button>
+                                                        <button type="submit"
+                                                            class="btn btn-primary btn-color btn-sm">Import
+                                                            Students</button>
                                                     </div>
                                                 </form>
 
@@ -165,7 +188,8 @@ include('admin_session.php');
                                         </div>
                                     </div>
 
-                                    <table id="dataTable" class="table table-striped table-bordered" cellspacing="0" width="100%" style="table-layout: fixed;">
+                                    <table id="dataTable" class="table table-striped table-bordered" cellspacing="0"
+                                        width="100%" style="table-layout: fixed;">
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -280,34 +304,31 @@ include('admin_session.php');
                         </div>
                     </div>
             </main>
-
-            <!-- ### $App Screen Footer ### -->
-            <?php include('footer.php'); ?>
         </div>
     </div>
 </body>
 <script type="text/javascript">
-    function showDept() {
-        selectElement = document.querySelector('#usertype');
+function showDept() {
+    selectElement = document.querySelector('#usertype');
 
-        var dept = document.getElementById("dept");
-        var details = document.getElementById("userDetails");
+    var dept = document.getElementById("dept");
+    var details = document.getElementById("userDetails");
 
-        output = selectElement.options[selectElement.selectedIndex].value;
+    output = selectElement.options[selectElement.selectedIndex].value;
 
-        if (output == 4) {
-            dept.style.display = "block";
-            details.style.display = "none";
-        } else if (output == 1) {
-            details.style.display = "block";
-            dept.style.display = "none";
+    if (output == 4) {
+        dept.style.display = "block";
+        details.style.display = "none";
+    } else if (output == 1) {
+        details.style.display = "block";
+        dept.style.display = "none";
 
-        } else {
-            dept.style.display = "none";
-            details.style.display = "none";
-        }
-        //
+    } else {
+        dept.style.display = "none";
+        details.style.display = "none";
     }
+    //
+}
 </script>
 
 </html>

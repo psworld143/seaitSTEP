@@ -1,0 +1,152 @@
+/* Navbar Background Color */
+.header {
+    background: rgb(233, 200, 134);
+    background: radial-gradient(circle, rgba(233, 200, 134, 1) 0%, rgba(241, 182, 62, 1) 98%);
+    color: white;
+}
+
+/* Optional: Style for nav links and dropdown items */
+.header .nav-left a,
+.header .nav-right a {
+    color: white;
+    /* Change text color for links */
+}
+
+.header .dropdown-menu {
+    background-color: #ffffff;
+    /* Background for dropdown items */
+}
+
+.header .dropdown-menu a {
+    color: #333333;
+    /* Text color for dropdown items */
+}
+
+.header .dropdown-menu a:hover {
+    background-color: #f8f9fa;
+    /* Change background on hover */
+}
+
+
+.sidebar-inner {
+    background-color: #fafafa;
+}
+
+.sidebar-logo{
+    background: #f1b63e;
+    height: 66px;
+}
+
+/* Sidebar Menu Styles */
+.sidebar .sidebar-menu {
+    display: block; /* Ensure sidebar is a block element */
+    margin-top: 20vh; /* Optional: Adjust top margin */
+    margin-left: 5px; /* Adjust left margin */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    border-radius: 5px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+    width: 35vh; /* Adjust width as needed */
+    height: auto; /* Set height to auto to fit content */
+}
+
+/* Sidebar List Styles */
+.sidebar-menu {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+/* Style for nav items */
+.nav-item {
+    margin-bottom: 0; /* Remove space between nav items */
+}
+
+/* Sidebar Links */
+.sidebar-link {
+    display: block; /* Make the link fill the full width */
+    color: inherit; /* Inherit text color */
+    text-decoration: none; /* Remove underline */
+    margin: 0; /* Remove any margin */
+    padding: 0; /* Remove any padding */
+}
+
+/* Active and Hover Styles */
+.sidebar-link:hover,
+.sidebar-link.active {
+    background-color: rgba(220, 220, 220, 0.7); /* Background color on hover or active */
+}
+
+/* Arrow Icon Styles */
+.arrows i {
+    transition: transform 0.5s ease;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+/* Dropdown Menu Styles */
+.dropdown-menu {
+    list-style-type: none; /* Remove default list styles */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+/* Title Span Adjustment */
+.sidebar-link .title,
+.dropdown-toggle .title {
+    margin-left: 0; /* Reset margin for title */
+    display: inline-block; /* Ensure it behaves like a block element for margin */
+    font-size: 14px;
+}
+
+/* Remove Padding for Nav Items */
+.sidebar-menu li {
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+    list-style: none; /* Remove list styling */
+}
+
+/* Additional Styles for Nav Items */
+.sidebar-menu .nav-item {
+    margin-bottom: 0; /* Space between menu items */
+}
+
+/* Dropdown Menu Styles */
+.sidebar-menu .dropdown-menu {
+    background-color: rgba(255, 255, 255, 0.9); /* Slightly less transparent for dropdowns */
+}
+
+/* Hover Effects */
+.sidebar-menu .nav-item a:hover {
+    background-color: #f1b63e; /* Light background on hover */
+    color: #000; /* Change text color on hover */
+}
+
+
+/* General Styles */
+.sidebar-link {
+    background-color: transparent; /* Default background */
+    color: inherit; /* Default text color */
+}
+
+/* Active State for Links */
+.sidebar-menu .sidebar-link.active {
+    background-color: #f1b63e !important; /* Active background */
+    color: #000 !important; /* Active text color */
+}
+
+/* Hover Effects */
+.sidebar-menu .nav-item a:hover {
+    background-color: #f1b63e; /* Background color on hover */
+    color: #000; /* Change text color on hover */
+}
+
+
+
+/* Adjustments for Horizontal Rule */
+.sidebar-menu hr {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+

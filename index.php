@@ -6,8 +6,7 @@ session_start();
 
 <head>
     <title>SEAIT-STEP</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
@@ -123,17 +122,57 @@ session_start();
     height: 100vh;
     position: relative;
     z-index: 1;
-    padding-right: 70px;
+    padding-right: 100px;
     /* Optional: add some padding from the right edge */
 }
 
 /* Card Styling */
 .card {
     background-color: rgba(255, 255, 255, 0.6);
+    height: 80vh;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     width: 24rem;
     /* You can keep this or adjust as necessary */
+}
+
+/* Input Group Hover Effect */
+.input-group:hover .input-group-text {
+    background-color: #e9c377;
+    /* Change this to your desired hover color */
+    color: white;
+    /* Change text color if needed */
+}
+
+.input-group:hover .form-control {
+    border-color: #e9c377;
+    /* Change border color of the input field */
+    box-shadow: 0 0 5px rgba(233, 195, 119, 0.5);
+    /* Optional: Add shadow for effect */
+}
+
+/* Input Group Focus Effect */
+.input-group .form-control:focus {
+    border-color: #e9c377;
+    /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(233, 195, 119, 0.5);
+    /* Add shadow on focus */
+    outline: none;
+    /* Remove default outline */
+}
+
+/* Focus effect on input-group-text (optional) */
+.input-group .input-group-text:focus {
+    background-color: #e9c377;
+    /* Change background color on focus */
+    color: white;
+    /* Change text color if needed */
+}
+
+/* Optionally, change input background color on hover */
+.input-group .form-control {
+    transition: border-color 0.3s, box-shadow 0.3s;
+    /* Smooth transition */
 }
 </style>
 
@@ -170,10 +209,10 @@ session_start();
             <div class="card-body">
                 <div class="bgc-white p-20" style="border-radius: 2%;">
                     <center>
-                        <h6 class="c-grey-900">Login to continue</h6>
+                        <h6 class="c-grey-900 mb-4">Login to start your session</h6>
                     </center>
                     <form action="backend_scripts/user_login.php" method="POST" autocomplete="false">
-                        <div class="input-group mb-3">
+                        <div class="input-group mb-4">
                             <div class="input-group-prepend">
                                 <span class="input-group-text" id="basic-addon1">@</span>
                             </div>
@@ -188,12 +227,16 @@ session_start();
                                 placeholder="Password">
                         </div>
                         <?php include('index_notification.php'); ?>
-                        <button type="submit" class="btn btn-primary btn-color" style="width:100%;">LOGIN</button>
+                        <center>
+                            <button type="submit" class="btn btn-color mt-4 mb-3"
+                                style="width:80%; background-color: #e9c377; color: white; font-weight: bold; font-color: black;">LOGIN</button>
+                        </center>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+
 
 
     <div id="myModala" class="modala">
@@ -239,9 +282,8 @@ session_start();
                 </form>
 
             </center>
-
-            <div />
         </div>
+    </div>
 
 </body>
 

@@ -9,6 +9,7 @@ include('admin_session.php');
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  <link rel="stylesheet" href="../style.css">
   <title>Departments</title>
   <style>
     #loader {
@@ -82,7 +83,6 @@ include('admin_session.php');
       <?php 
       include('sidebar.php'); 
       ?>
-
 
       <div class="page-container">
         <!-- ### $Topbar ### -->
@@ -211,9 +211,6 @@ include('admin_session.php');
             </div>
           </div>
         </main>
-
-        <!-- ### $App Screen Footer ### -->
-        <?php include('footer.php'); ?>
       </div>
     </div>
   </body>
