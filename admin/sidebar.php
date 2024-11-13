@@ -1,4 +1,3 @@
-
 <div class="sidebar">
     <!-- Set background color to transparent -->
     <div class="sidebar-inner">
@@ -33,11 +32,10 @@
         </div>
 
         <?php
-$current_page = basename($_SERVER['PHP_SELF']);
-echo "Current Page: " . $current_page; // Debugging line
-?>
+         $current_page = basename($_SERVER['PHP_SELF']);
+        ?>
 
-        
+
         <!-- ### $Sidebar Menu ### -->
         <ul class="sidebar-menu scrollable pos-r">
             <li class="nav-item">

@@ -166,6 +166,8 @@ while($questionaire_row = mysqli_fetch_assoc($questionaire_query)){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+  
+  <link rel="stylesheet" href="../style.css">
   <title><?php echo $rows['lastname'].', '.$rows['firstname']; ?></title>
   <style>
     #loader {

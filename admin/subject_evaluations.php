@@ -35,6 +35,8 @@ $load = 0;
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
   <script src="../assets/canvas.min.js"></script>
+  
+  <link rel="stylesheet" href="../style.css">
   <title>Evaluation Results</title>
   <style>
     #loader {
