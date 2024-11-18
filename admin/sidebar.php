@@ -32,7 +32,7 @@
         </div>
 
         <?php
-         $current_page = basename($_SERVER['PHP_SELF']);
+        $current_page = basename($_SERVER['PHP_SELF']);
         ?>
 
 
@@ -56,10 +56,10 @@
                     </span>
                     <span class="title">Student Questionnaires</span>
                     <span class="arrows">
-                        <i class="ti-angle-right"></i> <!-- This will change to ti-angle-down when active -->
+                        <i class="ti-angle-right"></i>
                     </span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu <?php echo ($current_page == 'categories.php' || $current_page == 'questionaires.php') ? 'show' : ''; ?>">
                     <li>
                         <a class="sidebar-link <?php echo ($current_page == 'categories.php') ? 'active' : ''; ?>"
                             href="categories.php">Categories</a>
@@ -79,10 +79,10 @@
                     </span>
                     <span class="title">Peer Questionnaires</span>
                     <span class="arrows">
-                        <i class="ti-angle-right"></i> <!-- This will change to ti-angle-down when active -->
+                        <i class="ti-angle-right"></i>
                     </span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu <?php echo ($current_page == 'p2p_categories.php' || $current_page == 'p2p_questionaires.php') ? 'show' : ''; ?>">
                     <li>
                         <a class="sidebar-link <?php echo ($current_page == 'p2p_categories.php') ? 'active' : ''; ?>"
                             href="p2p_categories.php">Categories</a>
@@ -130,14 +130,14 @@
 </div>
 
 <script>
-function toggleDropdown(element) {
-    const arrowIcon = element.querySelector('.arrows i');
-    if (arrowIcon.classList.contains('ti-angle-right')) {
-        arrowIcon.classList.remove('ti-angle-right');
-        arrowIcon.classList.add('ti-angle-down');
-    } else {
-        arrowIcon.classList.remove('ti-angle-down');
-        arrowIcon.classList.add('ti-angle-right');
+    function toggleDropdown(element) {
+        const arrowIcon = element.querySelector('.arrows i');
+        if (arrowIcon.classList.contains('ti-angle-right')) {
+            arrowIcon.classList.remove('ti-angle-right');
+            arrowIcon.classList.add('ti-angle-down');
+        } else {
+            arrowIcon.classList.remove('ti-angle-down');
+            arrowIcon.classList.add('ti-angle-right');
+        }
     }
-}
 </script>

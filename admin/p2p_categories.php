@@ -12,59 +12,59 @@ include('admin_session.php');
     <link rel="stylesheet" href="../style.css">
     <title>Peer to Peer Evaluation Category</title>
     <style>
-    #loader {
-        transition: all 0.3s ease-in-out;
-        opacity: 1;
-        visibility: visible;
-        position: fixed;
-        height: 100vh;
-        width: 100%;
-        background: #fff;
-        z-index: 90000;
-    }
-
-    #loader.fadeOut {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-
-
-    .spinner {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: calc(50% - 20px);
-        left: calc(50% - 20px);
-        background-color: #333;
-        border-radius: 100%;
-        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-        animation: sk-scaleout 1.0s infinite ease-in-out;
-    }
-
-    @-webkit-keyframes sk-scaleout {
-        0% {
-            -webkit-transform: scale(0)
+        #loader {
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background: #fff;
+            z-index: 90000;
         }
 
-        100% {
-            -webkit-transform: scale(1.0);
+        #loader.fadeOut {
             opacity: 0;
-        }
-    }
-
-    @keyframes sk-scaleout {
-        0% {
-            -webkit-transform: scale(0);
-            transform: scale(0);
+            visibility: hidden;
         }
 
-        100% {
-            -webkit-transform: scale(1.0);
-            transform: scale(1.0);
-            opacity: 0;
+
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+            animation: sk-scaleout 1.0s infinite ease-in-out;
         }
-    }
+
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
+        }
     </style>
     <script defer="defer" src="../assets/main.js"></script>
 </head>
@@ -75,21 +75,21 @@ include('admin_session.php');
     </div>
 
     <script>
-    window.addEventListener('load', function load() {
-        const loader = document.getElementById('loader');
-        setTimeout(function() {
-            loader.classList.add('fadeOut');
-        }, 300);
-    });
+        window.addEventListener('load', function load() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.classList.add('fadeOut');
+            }, 300);
+        });
     </script>
 
 
 
     <div>
 
-        <?php 
-        include('sidebar.php'); 
-      ?>
+        <?php
+        include('sidebar.php');
+        ?>
 
 
         <div class="page-container">
@@ -151,29 +151,28 @@ include('admin_session.php');
                                     </thead>
                                     <tbody>
                                         <?php
-                          $categories = mysqli_query($conn, "SELECT * FROM p2p_category ORDER BY added ASC");
-                          $count = 0;
-                          while($cat_rows = mysqli_fetch_assoc($categories)){
-                            $count +=1;
-                            $id = $cat_rows['id'];
-                            $cat_count = 0;
-                            $total_questions = mysqli_query($conn, "SELECT COUNT(*) AS total_questionaires FROM p2p_questionaires WHERE cat_id = '$id'");
-                            if(mysqli_num_rows($total_questions) > 0){
-                              $questions = mysqli_fetch_assoc($total_questions);
-                              $cat_count = $questions['total_questionaires'];
-                            }
-                            else{
-                              $cat_count = 0;
-                            }
-                            echo '
+                                        $categories = mysqli_query($conn, "SELECT * FROM p2p_category ORDER BY added ASC");
+                                        $count = 0;
+                                        while ($cat_rows = mysqli_fetch_assoc($categories)) {
+                                            $count += 1;
+                                            $id = $cat_rows['id'];
+                                            $cat_count = 0;
+                                            $total_questions = mysqli_query($conn, "SELECT COUNT(*) AS total_questionaires FROM p2p_questionaires WHERE cat_id = '$id'");
+                                            if (mysqli_num_rows($total_questions) > 0) {
+                                                $questions = mysqli_fetch_assoc($total_questions);
+                                                $cat_count = $questions['total_questionaires'];
+                                            } else {
+                                                $cat_count = 0;
+                                            }
+                                            echo '
                             <tr>
-                              <th scope="row"><span class="badge rounded-pill fl-l bg-info lh-0 p-10">'.$count.'</span></th>
-                              <td>'.$cat_rows['cat_name'].'</td>
-                              <td><span class="badge rounded-pill fl-l bg-success lh-0 p-10">'.$cat_count.'</span></td>
+                              <th scope="row"><span class="badge rounded-pill fl-l bg-info lh-0 p-10">' . $count . '</span></th>
+                              <td>' . $cat_rows['cat_name'] . '</td>
+                              <td><span class="badge rounded-pill fl-l bg-success lh-0 p-10">' . $cat_count . '</span></td>
                               <td>
-                              <button type="button" class="btn cur-p btn-danger btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#delete'.$id .'" style="margin-bottom: 2%;">DELETE</button>
+                              <button type="button" class="btn cur-p btn-danger btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#delete' . $id . '" style="margin-bottom: 2%;"><i class="ti-trash"></i> Delete</button>
                                   <!--Modal-->
-                                  <div class="modal fade" id="delete'.$id .'" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal fade" id="delete' . $id . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                       <div class="modal-content">
                                         <div class="modal-header">
@@ -183,11 +182,11 @@ include('admin_session.php');
                                         <div class="modal-body">
                                           <form action="../backend_scripts/delete_p2p_category.php" method="POST">
                   
-                                            <h6 class="c-grey-900">Are you sure you want to delete '.$cat_rows['cat_name'].'</h6>
+                                            <h6 class="c-grey-900">Are you sure you want to delete ' . $cat_rows['cat_name'] . '</h6>
                                             <div class="mT-30">
                                               
                                                 <div class="mb-3">                   
-                                                  <input type="hidden" class="form-control" value="'.$id .'" name="category_id"aria-describedby="emailHelp" placeholder="Type Category Name">
+                                                  <input type="hidden" class="form-control" value="' . $id . '" name="category_id"aria-describedby="emailHelp" placeholder="Type Category Name">
                                                 </div>  
                                               
                                             </div>
@@ -206,10 +205,10 @@ include('admin_session.php');
                             </tr>
 
                           ';
-                          }
-                          
+                                        }
 
-                        ?>
+
+                                        ?>
 
 
                                     </tbody>

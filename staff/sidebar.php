@@ -26,6 +26,9 @@
         </div>
       </div>
     </div>
+    <?php
+    $current_page = basename($_SERVER['PHP_SELF']);
+    ?>
     <!-- ### $Sidebar Menu ### -->
     <ul class="sidebar-menu scrollable pos-r">
       <!-- <li class="nav-item mT-30 actived">
@@ -53,7 +56,8 @@
         </a>
       </li>
       <li class="nav-item dropdown">
-        <a class="dropdown-toggle" href="javascript:void(0);">
+        <a class="dropdown-toggle <?php echo ($current_page == 'categories.php' || $current_page == 'questionaires.php') ? 'active' : ''; ?>"
+          href="javascript:void(0);" onclick="toggleDropdown(this)">
           <span class="icon-holder">
             <i class="c-red-500 ti-bar-chart"></i>
           </span>
@@ -62,15 +66,16 @@
             <i class="ti-angle-right"></i>
           </span>
         </a>
-        <ul class="dropdown-menu">
+        <ul class="dropdown-menu <?php echo ($current_page == 'categories.php' || $current_page == 'questionaires.php') ? 'show' : ''; ?>">
           <li>
-            <a class="sidebar-link" href="categories.php">Categories</a>
-          </li> 
+            <a class="sidebar-link <?php echo ($current_page == 'categories.php') ? 'active' : ''; ?>" href="categories.php">Categories</a>
+          </li>
           <li>
-            <a class="sidebar-link" href="questionaires.php">Questionaires</a>
-          </li> 
+            <a class="sidebar-link <?php echo ($current_page == 'questionaires.php') ? 'active' : ''; ?>" href="questionaires.php">Questionnaires</a>
+          </li>
         </ul>
       </li>
+
       <li class="nav-item">
         <a class="sidebar-link" href="academic_year.php">
           <span class="icon-holder">
@@ -98,7 +103,7 @@
           </li> 
         </ul>
       </li> -->
- <!--      <li class="nav-item">
+      <!--      <li class="nav-item">
         <a class="sidebar-link" href="evaluation_sheet.php">
           <span class="icon-holder">
             <i class="c-blue-500 ti-share"></i>

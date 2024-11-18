@@ -90,6 +90,18 @@
     margin: 0; /* Remove margin */
 }
 
+/* Keep dropdown expanded when 'show' class is added */
+.dropdown-menu.show {
+    display: block;
+    background-color: rgba(255, 255, 255, 0.9); /* Dropdown background */
+}
+
+/* Rotate arrow when dropdown is expanded */
+.dropdown-toggle.active .arrows i,
+.dropdown-menu.show .arrows i {
+    transform: rotate(90deg);
+}
+
 /* Title Span Adjustment */
 .sidebar-link .title,
 .dropdown-toggle .title {
