@@ -178,7 +178,7 @@ include('staff_session.php');
                         echo '
                           <td>
 
-                            <a href="view_instructors.php?dept_id=' . $id . '" class="btn cur-p btn-info btn-sm btn-color">Instructors</a>
+                            <a href="view_instructors.php?dept_id=' . $id . '" class="btn cur-p btn-info btn-sm btn-color"><i class="ti-user"></i> Instructors</a>
                             
                           </td> 
                           </tr>

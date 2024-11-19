@@ -104,7 +104,7 @@ include('admin_session.php');
                             <div class="bgc-white bd bdrs-3 p-20 mB-20">
                                 <h4 class="c-grey-900 mB-20">Peer to Peer Evaluation Category</h4>
                                 <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal" style="margin-bottom: 2%;">Add New </button>
+                                    data-bs-target="#exampleModal" style="margin-bottom: 2%;"><i class="ti-plus"></i> Add New </button>
                                 <!--Modal-->
                                 <div class="modal fade" id="exampleModal" tabindex="-1"
                                     aria-labelledby="exampleModalLabel" aria-hidden="true">

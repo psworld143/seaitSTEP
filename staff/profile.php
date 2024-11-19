@@ -620,7 +620,7 @@ while ($questionaire_row = mysqli_fetch_assoc($questionaire_query)) {
             </div>
           </div>
           <div style="margin-top: 2%;">
-            <center><a href="employees.php" class="btn btn-danger btn-color">CLOSE EMPLOYEE PROFILE</a></center>
+            <center><a href="departments.php" class="btn btn-danger btn-color">CLOSE EMPLOYEE PROFILE</a></center>
           </div>
 
 

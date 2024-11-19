@@ -84,8 +84,6 @@ include('admin_session.php');
     });
   </script>
 
-
-
   <div>
 
     <?php
@@ -129,8 +127,8 @@ include('admin_session.php');
                             </div>
                         </div>
                         <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary">Save</button>
+                          <button type="button" class="btn btn-secondary btn-sm btn-color" data-bs-dismiss="modal">Cancel</button>
+                          <button type="submit" class="btn btn-primary btn-color btn-sm">Save</button>
                         </div>
                         </form>
                       </div>

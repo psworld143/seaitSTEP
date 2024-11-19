@@ -101,7 +101,7 @@ include('../dbconnection.php');
             <div class="col-md-12">
               <div class="bgc-white bd bdrs-3 p-20 mB-20">
                 <h4 class="c-grey-900 mB-20">Evaluation Category</h4>
-                <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 2%;">Add New </button>
+                <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 2%;"><i class="ti-plus"></i> Add New </button>
                 <!--Modal-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">

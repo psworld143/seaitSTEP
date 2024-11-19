@@ -103,7 +103,7 @@ include('staff_session.php');
             <div class="col-md-12">
               <div class="bgc-white bd bdrs-3 p-20 mB-20">
                 <h4 class="c-grey-900 mB-20">Evaluation Questionaires</h4>
-                <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 2%;">Add New </button>
+                <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" style="margin-bottom: 2%;"><i class="ti-plus"></i> Add New </button>
                 <!--Modal-->
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
@@ -174,7 +174,7 @@ include('staff_session.php');
                                         <td><span class="badge rounded-pill fl-l bg-success lh-0 p-10">' . $q_number . '</badge></td>
                                         <td>' . $row_question['description'] . '</td>
                                         <td>
-                                          <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#edit' . $row_question['id'] . '"><i class="ti-pencil-alt2"></i></button>
+                                          <button type="button" class="btn cur-p btn-info btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#edit' . $row_question['id'] . '"><i class="ti-pencil-alt2"></i> Edit</button>
                                           <div class="modal fade" id="edit' . $row_question['id'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                               <div class="modal-content">
@@ -204,7 +204,7 @@ include('staff_session.php');
                                           </div>
 
 
-                                          <button type="button" class="btn cur-p btn-danger btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#delete' . $row_question['id'] . '"><i class="ti-trash"></i></button>
+                                          <button type="button" class="btn cur-p btn-danger btn-color btn-sm" data-bs-toggle="modal" data-bs-target="#delete' . $row_question['id'] . '"><i class="ti-trash"></i> Delete</button>
                                           <div class="modal fade" id="delete' . $row_question['id'] . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                               <div class="modal-content">

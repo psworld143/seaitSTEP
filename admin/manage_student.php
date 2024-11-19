@@ -12,59 +12,59 @@ include('admin_session.php');
     <link rel="stylesheet" href="../style.css">
     <title>User Management</title>
     <style>
-    #loader {
-        transition: all 0.3s ease-in-out;
-        opacity: 1;
-        visibility: visible;
-        position: fixed;
-        height: 100vh;
-        width: 100%;
-        background: #fff;
-        z-index: 90000;
-    }
-
-    #loader.fadeOut {
-        opacity: 0;
-        visibility: hidden;
-    }
-
-
-
-    .spinner {
-        width: 40px;
-        height: 40px;
-        position: absolute;
-        top: calc(50% - 20px);
-        left: calc(50% - 20px);
-        background-color: #333;
-        border-radius: 100%;
-        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
-        animation: sk-scaleout 1.0s infinite ease-in-out;
-    }
-
-    @-webkit-keyframes sk-scaleout {
-        0% {
-            -webkit-transform: scale(0)
+        #loader {
+            transition: all 0.3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background: #fff;
+            z-index: 90000;
         }
 
-        100% {
-            -webkit-transform: scale(1.0);
+        #loader.fadeOut {
             opacity: 0;
-        }
-    }
-
-    @keyframes sk-scaleout {
-        0% {
-            -webkit-transform: scale(0);
-            transform: scale(0);
+            visibility: hidden;
         }
 
-        100% {
-            -webkit-transform: scale(1.0);
-            transform: scale(1.0);
-            opacity: 0;
+
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+            animation: sk-scaleout 1.0s infinite ease-in-out;
         }
-    }
+
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                opacity: 0;
+            }
+        }
+
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            }
+
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
+        }
     </style>
     <script defer="defer" src="../assets/main.js"></script>
 </head>
@@ -75,12 +75,12 @@ include('admin_session.php');
     </div>
 
     <script>
-    window.addEventListener('load', function load() {
-        const loader = document.getElementById('loader');
-        setTimeout(function() {
-            loader.classList.add('fadeOut');
-        }, 300);
-    });
+        window.addEventListener('load', function load() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.classList.add('fadeOut');
+            }, 300);
+        });
     </script>
 
 
@@ -105,8 +105,8 @@ include('admin_session.php');
                                 <div class="bgc-white bd bdrs-3 p-20">
                                     <div class="peer">
                                         <button type="button" class="btn btn-primary btn-sm btn-color"
-                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                            Upload List of Students
+                                            data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="ti-upload"></i>
+                                            Upload Students
                                         </button>
                                         <?php include('notification.php'); ?>
 
@@ -131,13 +131,13 @@ include('admin_session.php');
                                                                 for="inputState">Department</label>
                                                             <select id="inputState" name="dept_id" class="form-control"
                                                                 required>
-                                                                <option value="">Select Below</option>
+                                                                <option value="" disabled selected>Select Below</option>
                                                                 <?php
-                                                              $cat = mysqli_query($conn, "SELECT * FROM departments ORDER BY dept_name ASC");
-                                                              while($category_rows = mysqli_fetch_assoc($cat)){
-                                                                echo '<option value="'.$category_rows['id'].'">'.$category_rows['dept_name'].'</option>';
-                                                              }
-                                                            ?>
+                                                                $cat = mysqli_query($conn, "SELECT * FROM departments ORDER BY dept_name ASC");
+                                                                while ($category_rows = mysqli_fetch_assoc($cat)) {
+                                                                    echo '<option value="' . $category_rows['id'] . '">' . $category_rows['dept_name'] . '</option>';
+                                                                }
+                                                                ?>
 
                                                             </select>
                                                         </div>
@@ -239,7 +239,7 @@ include('admin_session.php');
                                     <td>' . $email_add . '</td>
                                     <td>
                                     <button type="button" class="btn btn-danger btn-sm btn-color" data-bs-toggle="modal" data-bs-target="#deleteUser' . $user_id . '">
-                                        Remove
+                                        <i class="ti-trash"></i> Remove
                                     </button>
                                     <div class="modal fade" id="deleteUser' . $user_id . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -262,7 +262,7 @@ include('admin_session.php');
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-success btn-sm btn-color" data-bs-toggle="modal" data-bs-target="#resetUser' . $user_id . '">
-                                        Reset
+                                        <i class="ti-reload"></i> Reset
                                     </button>
                                     <div class="modal fade" id="resetUser' . $user_id . '" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
@@ -308,27 +308,27 @@ include('admin_session.php');
     </div>
 </body>
 <script type="text/javascript">
-function showDept() {
-    selectElement = document.querySelector('#usertype');
+    function showDept() {
+        selectElement = document.querySelector('#usertype');
 
-    var dept = document.getElementById("dept");
-    var details = document.getElementById("userDetails");
+        var dept = document.getElementById("dept");
+        var details = document.getElementById("userDetails");
 
-    output = selectElement.options[selectElement.selectedIndex].value;
+        output = selectElement.options[selectElement.selectedIndex].value;
 
-    if (output == 4) {
-        dept.style.display = "block";
-        details.style.display = "none";
-    } else if (output == 1) {
-        details.style.display = "block";
-        dept.style.display = "none";
+        if (output == 4) {
+            dept.style.display = "block";
+            details.style.display = "none";
+        } else if (output == 1) {
+            details.style.display = "block";
+            dept.style.display = "none";
 
-    } else {
-        dept.style.display = "none";
-        details.style.display = "none";
+        } else {
+            dept.style.display = "none";
+            details.style.display = "none";
+        }
+        //
     }
-    //
-}
 </script>
 
 </html>

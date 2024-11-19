@@ -1,4 +1,4 @@
-<?php  
+<?php
 session_start();
 ?>
 <!DOCTYPE html>
@@ -11,169 +11,169 @@ session_start();
 
 </head>
 <style type="text/css">
-.card img {
-    margin: auto;
-    margin-top: 15%;
-    margin-bottom: 2%;
-    width: 30%;
-    -webkit-animation: mover 2s infinite alternate;
-    animation: mover 1s infinite alternate;
-}
-
-@-webkit-keyframes mover {
-    0% {
-        transform: translateY(0);
+    .card img {
+        margin: auto;
+        margin-top: 15%;
+        margin-bottom: 2%;
+        width: 30%;
+        -webkit-animation: mover 2s infinite alternate;
+        animation: mover 1s infinite alternate;
     }
 
-    100% {
-        transform: translateY(-20px);
+    @-webkit-keyframes mover {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-20px);
+        }
     }
-}
 
-@keyframes mover {
-    0% {
-        transform: translateY(0);
+    @keyframes mover {
+        0% {
+            transform: translateY(0);
+        }
+
+        100% {
+            transform: translateY(-20px);
+        }
     }
 
-    100% {
-        transform: translateY(-20px);
+    .modala {
+
+        display: none;
+        /* Hidden by default */
+
+        position: fixed;
+        /* Stay in place */
+
+        z-index: 2;
+        /* Sit on top */
+
+        left: 0;
+
+        top: 0;
+
+        width: 100%;
+
+        height: 100%;
+
+        background-color: rgba(0, 0, 0, 0);
+        /* Black with opacity */
+
     }
-}
-
-.modala {
-
-    display: none;
-    /* Hidden by default */
-
-    position: fixed;
-    /* Stay in place */
-
-    z-index: 2;
-    /* Sit on top */
-
-    left: 0;
-
-    top: 0;
-
-    width: 100%;
-
-    height: 100%;
-
-    background-color: rgba(0, 0, 0, 0);
-    /* Black with opacity */
-
-}
 
 
-.modala-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 30%;
-}
+    .modala-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 30%;
+    }
 
-.closea {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    .closea {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-/* Background image container */
-.background-image {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('images/faculty1.png');
-    /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-}
+    /* Background image container */
+    .background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('images/faculty1.png');
+        /* Replace with your image path */
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+    }
 
-/* Gradient overlay */
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            rgba(2, 0, 36, 0.7) 0%,
-            /* Dark blue with 70% opacity */
-            rgba(141, 222, 238, 0.6) 0%,
-            /* Light blue with 60% opacity */
-            rgba(231, 197, 128, 0.5) 21%,
-            /* Light orange with 50% opacity */
-            rgba(241, 182, 62, 0.6) 100%
-            /* Orange with 60% opacity */
-        );
-}
+    /* Gradient overlay */
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg,
+                rgba(2, 0, 36, 0.7) 0%,
+                /* Dark blue with 70% opacity */
+                rgba(141, 222, 238, 0.6) 0%,
+                /* Light blue with 60% opacity */
+                rgba(231, 197, 128, 0.5) 21%,
+                /* Light orange with 50% opacity */
+                rgba(241, 182, 62, 0.6) 100%
+                /* Orange with 60% opacity */
+            );
+    }
 
-/* Card Container Styling */
-.card-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    /* Align to the right */
-    height: 100vh;
-    position: relative;
-    z-index: 1;
-    padding-right: 100px;
-    /* Optional: add some padding from the right edge */
-}
+    /* Card Container Styling */
+    .card-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        /* Align to the right */
+        height: 100vh;
+        position: relative;
+        z-index: 1;
+        padding-right: 100px;
+        /* Optional: add some padding from the right edge */
+    }
 
-/* Card Styling */
-.card {
-    background-color: rgba(255, 255, 255, 0.6);
-    height: 80vh;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 24rem;
-    /* You can keep this or adjust as necessary */
-}
+    /* Card Styling */
+    .card {
+        background-color: rgba(255, 255, 255, 0.6);
+        height: 80vh;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        width: 24rem;
+        /* You can keep this or adjust as necessary */
+    }
 
-/* Input Group Hover Effect */
-.input-group:hover .input-group-text {
-    background-color: #e9c377;
-    /* Change this to your desired hover color */
-    color: white;
-    /* Change text color if needed */
-}
+    /* Input Group Hover Effect */
+    .input-group:hover .input-group-text {
+        background-color: #e9c377;
+        /* Change this to your desired hover color */
+        color: white;
+        /* Change text color if needed */
+    }
 
-.input-group:hover .form-control {
-    border-color: #e9c377;
-    /* Change border color of the input field */
-    box-shadow: 0 0 5px rgba(233, 195, 119, 0.5);
-    /* Optional: Add shadow for effect */
-}
+    .input-group:hover .form-control {
+        border-color: #e9c377;
+        /* Change border color of the input field */
+        box-shadow: 0 0 5px rgba(233, 195, 119, 0.5);
+        /* Optional: Add shadow for effect */
+    }
 
-/* Input Group Focus Effect */
-.input-group .form-control:focus {
-    border-color: #e9c377;
-    /* Change border color on focus */
-    box-shadow: 0 0 5px rgba(233, 195, 119, 0.5);
-    /* Add shadow on focus */
-    outline: none;
-    /* Remove default outline */
-}
+    /* Input Group Focus Effect */
+    .input-group .form-control:focus {
+        border-color: #e9c377;
+        /* Change border color on focus */
+        box-shadow: 0 0 5px rgba(233, 195, 119, 0.5);
+        /* Add shadow on focus */
+        outline: none;
+        /* Remove default outline */
+    }
 
-/* Focus effect on input-group-text (optional) */
-.input-group .input-group-text:focus {
-    background-color: #e9c377;
-    /* Change background color on focus */
-    color: white;
-    /* Change text color if needed */
-}
+    /* Focus effect on input-group-text (optional) */
+    .input-group .input-group-text:focus {
+        background-color: #e9c377;
+        /* Change background color on focus */
+        color: white;
+        /* Change text color if needed */
+    }
 
-/* Optionally, change input background color on hover */
-.input-group .form-control {
-    transition: border-color 0.3s, box-shadow 0.3s;
-    /* Smooth transition */
-}
+    /* Optionally, change input background color on hover */
+    .input-group .form-control {
+        transition: border-color 0.3s, box-shadow 0.3s;
+        /* Smooth transition */
+    }
 </style>
 
 <script defer="defer" src="assets/main.js"></script>
@@ -184,12 +184,12 @@ session_start();
     </div>
 
     <script>
-    window.addEventListener('load', function load() {
-        const loader = document.getElementById('loader');
-        setTimeout(function() {
-            loader.classList.add('fadeOut');
-        }, 500);
-    });
+        window.addEventListener('load', function load() {
+            const loader = document.getElementById('loader');
+            setTimeout(function() {
+                loader.classList.add('fadeOut');
+            }, 500);
+        });
     </script>
 
     <!-- Background Video
@@ -289,6 +289,6 @@ session_start();
 
 </html>
 <?php
-    session_destroy();
+session_destroy();
 
 ?>
