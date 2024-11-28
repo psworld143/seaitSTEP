@@ -65,6 +65,18 @@ include('admin_session.php');
                 opacity: 0;
             }
         }
+
+        #formFile {
+            margin-bottom: 15px;
+            /* Adjust the value as needed */
+        }
+
+        .btn-position-right {
+            margin-left: auto;
+            /* Pushes the button to the right */
+            margin-right: 0;
+            margin-bottom: 20px;
+        }
     </style>
     <script defer="defer" src="../assets/main.js"></script>
 </head>
@@ -141,11 +153,18 @@ include('admin_session.php');
 
                                                             </select>
                                                         </div>
+
                                                         <div class="mb-3">
                                                             <label for="formFile" class="form-label">CSV File</label>
-                                                            <!-- Add the name attribute to the file input field -->
-                                                            <input class="form-control" type="file" id="formFile"
-                                                                name="csv_file">
+                                                            <!-- File input field -->
+                                                            <div class="d-flex align-items-center">
+                                                                <input class="form-control me-2" type="file" id="formFile" name="csv_file">
+
+                                                                <!-- Download CSV Format Icon with Tooltip -->
+                                                                <a href="../backend_scripts/download_student_format.php" class="btn btn-sm btn-info mb-3" data-bs-toggle="tooltip" title="Download student CSV format">
+                                                                    <i class="ti-download"></i>
+                                                                </a>
+                                                            </div>
                                                         </div>
 
                                                         <!-- guidance -->
@@ -287,9 +306,7 @@ include('admin_session.php');
 
                                     </td>
                                 </tr>
-                                
-
-                                
+                                                               
                             ';
                                             }
                                             ?>
@@ -329,6 +346,14 @@ include('admin_session.php');
         }
         //
     }
+</script>
+
+<script>
+    // Initialize Bootstrap tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+    var tooltipList = tooltipTriggerList.map(function(tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl)
+    })
 </script>
 
 </html>
