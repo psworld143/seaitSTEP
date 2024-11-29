@@ -18,6 +18,14 @@ function insertUser($conn, $email, $lastname, $firstname, $school_id, $usertype,
     }
 }
 
+// Function to insert a notification
+function insertNotification($conn, $message)
+{
+    $message = mysqli_real_escape_string($conn, $message);
+    $notification_query = mysqli_query($conn, "INSERT INTO notifications (message) VALUES ('$message')");
+    return $notification_query;
+}
+
 // Check if CSV file is uploaded
 if (isset($_FILES['csv_file'])) {
     if ($_FILES['csv_file']['error'] == UPLOAD_ERR_OK) {
@@ -44,7 +52,7 @@ if (isset($_FILES['csv_file'])) {
                 $school_id = $data[1]; // Adjusted index for school_id
                 $lastname = $data[2];
                 $firstname = $data[3];
-                $usertype = 3; // Hardcoded usertype as 3
+                $usertype = 3; // Hardcoded usertype as 3 (student)
                 $dept = $_POST['dept_id'];
 
                 // Debug data
@@ -57,6 +65,13 @@ if (isset($_FILES['csv_file'])) {
                         // Insert user into the database
                         if (insertUser($conn, $email, $lastname, $firstname, $school_id, $usertype, $dept)) {
                             $_SESSION['success'] = 'User successfully added!';
+                            // Create notification
+                            $notification_message = "A new student '{$firstname} {$lastname}' has been added to the system.";
+                            if (insertNotification($conn, $notification_message)) {
+                                $_SESSION['success'] .= " Notification successfully created.";
+                            } else {
+                                $_SESSION['error'] = 'User added, but notification failed!';
+                            }
                         } else {
                             $_SESSION['error'] = 'Failed to add user to the database!';
                         }

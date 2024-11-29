@@ -1,82 +1,102 @@
 <?php
 include('../dbconnection.php');
 session_start();
-if(isset($_POST['usertype'])){
+
+// Ensure the connection is valid
+if (!$conn) {
+	die("Connection failed: " . mysqli_connect_error());
+}
+
+if (isset($_POST['usertype'])) {
 	$usertype = $_POST['usertype'];
-	$email = 'seait@seait-edu.ph';
 	$firstname = trim($_POST['firstname']);
 	$lastname = trim($_POST['lastname']);
-	//Check for Lastname
-	$check_query = mysqli_query($conn, "SELECT * FROM step_users WHERE lastname = '$lastname' AND firstname = '$firstname' ");
-	if(mysqli_num_rows($check_query) == 0 ){
+	$email = 'seait@seait-edu.ph';  // Default email (for some users)
 
-		if ($usertype== 1) {
-		//Guidance
+	// Check if the user already exists by lastname and firstname
+	$check_query = mysqli_query($conn, "SELECT * FROM step_users WHERE lastname = '$lastname' AND firstname = '$firstname'");
+	if (mysqli_num_rows($check_query) == 0) {
 
-			$email = $_POST['email'];
-			$password = $_POST['password'];
-			$password1 = $_POST['password1'];
+		// For Guidance Office User (usertype == 1)
+		if ($usertype == 1) {
+			$email = mysqli_real_escape_string($conn, $_POST['email']);
+			$password = mysqli_real_escape_string($conn, $_POST['password']);
+			$password1 = mysqli_real_escape_string($conn, $_POST['password1']);
 			$pass = md5($password);
-			if($username == ''){
-				$_SESSION['error'] = 'Username is empty!';
-			}
-			else if($password != $password1 ){
-				$_SESSION['error'] = 'There is an error in password provided!';
-			}
-			else{
-				$sql_insert_admin = mysqli_query($conn, "INSERT INTO step_users(email,password,lastname,firstname,usertype) VALUES('$email','$pass','$lastname','$firstname','$usertype')");
-				if($sql_insert_admin){
-					$_SESSION['success'] = "Guidance Office user successfully added!";
+
+			if ($password != $password1) {
+				$_SESSION['error'] = 'Passwords do not match!';
+			} else {
+				$sql_insert_user = mysqli_query($conn, "INSERT INTO step_users(email, password, lastname, firstname, usertype) 
+                                                        VALUES('$email', '$pass', '$lastname', '$firstname', '$usertype')");
+				if ($sql_insert_user) {
+					// Add a notification after successfully adding the user
+					$notification_message = "A new user '{$firstname} {$lastname}' has been added to the Guidance Office.";
+					$notification_message = mysqli_real_escape_string($conn, $notification_message);
+					$notification_query = mysqli_query($conn, "INSERT INTO notifications (message) VALUES ('$notification_message')");
+
+					if ($notification_query) {
+						$_SESSION['success'] = "Guidance Office user successfully added and notification created!";
+					} else {
+						$_SESSION['error'] = "User added, but notification failed!";
+					}
+				} else {
+					$_SESSION['error'] = 'There is an error adding the Guidance Office user!';
 				}
-				else{
-					$_SESSION['error'] = 'There is an error adding guidance office user!';
-				}
-
 			}
 
-
-		}
-		else if($usertype== 2){
-		//Admin Department
-		    $email = $_POST['email'];
-		    $passABC = md5("Seait123");
-			$insert_admin_query = mysqli_query($conn, "INSERT INTO step_users(lastname,firstname,usertype,email,password) VALUES('$lastname','$firstname','$usertype','$email','$passABC')");
-			if($insert_admin_query){
-				$_SESSION['success'] = "Admin Department user successfully added!";
-			}
-			else{
-				$_SESSION['error'] = 'There is an error adding admin office user!';
-			}
-
-
-		}
-		else if($usertype== 4){
-		//Department Head
-		    $email = $_POST['email'];
-			$dept = $_POST['department'];
+			// For Admin Department User (usertype == 2)
+		} else if ($usertype == 2) {
+			$email = mysqli_real_escape_string($conn, $_POST['email']);
 			$passABC = md5("Seait123");
-			$insert_dept_head = mysqli_query($conn, "INSERT INTO step_users(lastname,firstname,usertype,dept,email,password) VALUES('$lastname','$firstname','$usertype','$dept','$email','$passABC')");
-			if($insert_dept_head){
-				$_SESSION['success'] = "user successfully added!";
+
+			$sql_insert_admin = mysqli_query($conn, "INSERT INTO step_users(email, password, lastname, firstname, usertype) 
+                                                    VALUES('$email', '$passABC', '$lastname', '$firstname', '$usertype')");
+			if ($sql_insert_admin) {
+				// Add a notification after successfully adding the user
+				$notification_message = "A new user '{$firstname} {$lastname}' has been added to the Admin Department.";
+				$notification_message = mysqli_real_escape_string($conn, $notification_message);
+				$notification_query = mysqli_query($conn, "INSERT INTO notifications (message) VALUES ('$notification_message')");
+
+				if ($notification_query) {
+					$_SESSION['success'] = "Admin Department user successfully added and notification created!";
+				} else {
+					$_SESSION['error'] = "User added, but notification failed!";
+				}
+			} else {
+				$_SESSION['error'] = 'There is an error adding Admin Department user!';
 			}
-			else{
-				$_SESSION['error'] = 'There is an error adding admin office user!';
+
+			// For Department Head User (usertype == 4)
+		} else if ($usertype == 4) {
+			$email = mysqli_real_escape_string($conn, $_POST['email']);
+			$dept = mysqli_real_escape_string($conn, $_POST['department']);
+			$passABC = md5("Seait123");
+
+			$insert_dept_head = mysqli_query($conn, "INSERT INTO step_users(lastname, firstname, usertype, dept, email, password) 
+                                                    VALUES('$lastname', '$firstname', '$usertype', '$dept', '$email', '$passABC')");
+			if ($insert_dept_head) {
+				// Add a notification after successfully adding the user
+				$notification_message = "A new Department Head user '{$firstname} {$lastname}' has been added.";
+				$notification_message = mysqli_real_escape_string($conn, $notification_message);
+				$notification_query = mysqli_query($conn, "INSERT INTO notifications (message) VALUES ('$notification_message')");
+
+				if ($notification_query) {
+					$_SESSION['success'] = "Department Head user successfully added and notification created!";
+				} else {
+					$_SESSION['error'] = "User added, but notification failed!";
+				}
+			} else {
+				$_SESSION['error'] = 'There is an error adding Department Head user!';
 			}
-
+		} else {
+			$_SESSION['error'] = 'Invalid user type selected!';
 		}
-		else{
-
-		}
+	} else {
+		$_SESSION['error'] = 'User with the same Lastname and Firstname already exists!';
 	}
-	else{
-		$_SESSION['error'] = 'User with the same Lastname and Password exists in the database!';
-	}
+} else {
+	$_SESSION['error'] = 'Please select a User Type first';
+}
 
-}
-else{
-	$_SESSION['error'] = 'Please select Usertype first';
-}
 header('location: ../admin/manage_user.php');
-
-
-?>
