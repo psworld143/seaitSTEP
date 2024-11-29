@@ -13,7 +13,7 @@ $output = fopen('php://output', 'w');
 fputcsv($output, ['Email', 'School ID', 'Last Name', 'First Name']);
 
 // Optional: Add example data (can be left empty or adjust based on your format)
-fputcsv($output, ['example@example.com', '12345', 'Doe', 'John']);
+fputcsv($output, ['2021-01096', '2021-01096', 'Doe', 'John']);
 
 // Close the file pointer
 fclose($output);
